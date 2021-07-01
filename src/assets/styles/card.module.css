@@ -1,0 +1,28 @@
+.card {
+  padding: 0 24px 16px;
+}
+.content-wrapper {
+  display: flex;
+}
+.card-header {
+  color: #1d201f;
+  font-weight: 700;
+}
+.card-img {
+  width: 144px;
+  height: auto;
+  border-radius: 4px;
+  background-color: lightskyblue;
+}
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.text {
+  width: 90%;
+}
+.indent {
+  margin-bottom: 33px;
+}
