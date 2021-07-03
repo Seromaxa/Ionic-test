@@ -1,13 +1,19 @@
 export function createDates(item) {
   let arr = []
+  let toDay = new Date()
   let day = 86400000
   let long = item.dates.long * day
   let endDate = item.dates.beginDate + long
   let totalId = `${item.id}`
 
   for (let begin = item.dates.beginDate; begin < endDate; begin += day) {
-    if (begin >= item.dates.beginDate) {
-      arr.push(item.dates.beginDate + begin)
+    if (
+      begin >=
+      Date.parse(
+        `${toDay.getFullYear()}-${toDay.getMonth() + 1}-${toDay.getDate()}`
+      )
+    ) {
+      arr.push(begin)
     }
   }
 
@@ -42,7 +48,7 @@ export function createDates(item) {
       }
     })
   }
-
+  console.log(arr)
   return arr
 }
 
