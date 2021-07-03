@@ -1,57 +1,44 @@
 export function createDates(item) {
   let arr = []
-  let toDay = new Date()
   let day = 86400000
   let long = item.dates.long * day
   let endDate = item.dates.beginDate + long
   let totalId = `${item.id}`
 
   for (let begin = item.dates.beginDate; begin < endDate; begin += day) {
-    let itemDate = new Date(begin)
-    if (
-      itemDate >=
-      new Date(
-        `${toDay.getFullYear()}-${toDay.getMonth() + 1}-${toDay.getDate()}`
-      )
-    ) {
-      arr.push(itemDate)
+    if (begin >= item.dates.beginDate) {
+      arr.push(item.dates.beginDate + begin)
     }
   }
 
   if (item.dates.unincludeDay.length > 0) {
-    let some = []
-    let test = item.dates.unincludeDay.reduce((acc, i) => {
+    let test = item.dates.unincludeDay.map((item) => Date.parse(item))
+    test = test.reduce((acc, i) => {
       acc[i] = acc[i] ? acc[i] + 1 : 1
       return acc
     }, {})
+
     for (let i = 0; i < arr.length; i++) {
-      let current = `${arr[i].getFullYear()}-${arr[i].getMonth() + 1}-${arr[
-        i
-      ].getDate()}`
-      some.push(current)
-    }
-    for (let i = 0; i < some.length; i++) {
-      let current = some[i]
+      let current = arr[i]
       let count = test[current]
 
       if (count && count > 0) {
-        some = some.filter((item) => item !== current)
+        arr = arr.filter((item) => item !== current)
       }
     }
-    some = some.map((item) => {
+    arr = arr.map((item) => {
       return {
         id: item,
         active: totalId,
         date: new Date(item),
       }
     })
-    arr = [...some]
   } else {
     arr = arr.map((item) => {
       return {
-        id: `${item.getFullYear()}-${item.getMonth() + 1}-${item.getDate()}`,
+        id: item,
         active: totalId,
-        date: item,
+        date: new Date(item),
       }
     })
   }

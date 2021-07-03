@@ -93,7 +93,7 @@ const App = () => {
                       <IonImg
                         className={card["card-img"]}
                         src={item.photo}
-                        alt={item.surname}
+                        alt={item.name}
                       />
                       <IonCardContent className={card["card-content"]}>
                         <p className={card.text}>Длительность Консультации</p>

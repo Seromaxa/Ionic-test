@@ -9,10 +9,6 @@ const calendarReducer = createSlice({
         beginDate: Date.parse("2021-7-14"),
         long: 27,
         unincludeDay: ["2021-7-16", "2021-7-18", "2021-8-1"],
-        //   currentDate: {
-        //     day: "",
-        //     hour: "",
-        //   },
       },
 
       hours: ["14:00", "15:00", "15:50", "16:40", "18:00"],
