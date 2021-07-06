@@ -183,7 +183,7 @@ const Calendar = ({ calendar, activeTime }) => {
               </IonRow>
               <IonRow>
                 <IonCol className={`${style.position} ${style.centre}`}>
-                  <IonButton onClick={submitHandler}>
+                  <IonButton size="default" onClick={submitHandler}>
                     записатся на бесплатную встречу
                   </IonButton>
                 </IonCol>
